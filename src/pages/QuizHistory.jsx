@@ -63,7 +63,7 @@ const QuizHistory = () => {
             <div className='w-full h-[88%] flex flex-col justify-start items-center pb-5 bg-[#36454F] ]'>
                 <div className='w-11/12 flex flex-col flex-wrap gap-5 mt-5'>
                     <h2 className='text-2xl '>Quizzes I Created</h2>
-                    <div className='w-11/12 px-5 py-7 flex overflow-auto gap-5 mt-2 bg-black text-center'>
+                    <div className='w-11/12 px-5 py-7 flex overflow-x-scroll gap-5 mt-2 bg-black text-center'>
                         {myCreatedQuizzes.length > 0 ? myCreatedQuizzes.map((quiz, index) => {
                             return (
                                 <div key={index} id={quiz.quizCode} className='min-w-[20rem] bg-cyan-300 p-5 rounded-md flex flex-col justify-center items-center gap-2'>
@@ -81,7 +81,7 @@ const QuizHistory = () => {
 
                 <div className='w-11/12 flex flex-col flex-wrap gap-5 mt-5'>
                     <h2 className='text-2xl'>Quizzes I Attempted</h2>
-                    <div className='w-11/12 px-5 py-7 flex overflow-auto gap-5 mt-2 bg-black text-center'>
+                    <div className='w-11/12 px-5 py-7 flex overflow-x-scroll gap-5 mt-2 bg-black text-center'>
                         {quizzesIAttempted.length > 0 ? quizzesIAttempted.map((quiz, index) => {
                             return (
                                 <div key={index} id={index} className='min-w-[20rem] bg-cyan-300 p-5 rounded-md flex flex-col justify-center items-center gap-2'>

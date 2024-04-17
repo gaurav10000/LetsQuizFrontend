@@ -32,20 +32,35 @@ const Leaderboard = () => {
     return (
         <div className='w-full h-dvh'>
             <Dashboard />
-            <div className='w-full h-[88%] gap-1 flex flex-col justify-center items-center bg-[#36454F]'>
-                <div className='w-[80%] h-[90%] bg-slate-500 flex flex-col gap-5 items-center overflow-auto py-10'>
-                <h1 className='text-5xl'> <u >LeaderBoard</u> </h1>
-                    {
-                        !isResultFetched ? <h1>Loading</h1> : leaderboard.length == 0 ? <h1 className='text-5xl'>Nothing to show yet...</h1> : leaderboard.map((element, index) => {
-                            return <div key={index} className='w-[90%] min-h-[10%] bg-green-500 flex gap-4 justify-start items-start py-3 px-4'>
-                                <div className='w-[10%] h-full bg-slate-600 flex justify-center py-5'>{index + 1}</div>
-                                <div className='w-[70%] h-full bg-slate-600 flex justify-center py-5'>{element.userId.username}</div>
-                                <div className='w-[20%] h-full bg-slate-600 flex justify-center py-5'>{element.score}</div>
+            <div className='w-full h-[88%] flex flex-col justify-center items-center bg-gray-900 '>
+                <div className='w-[80%] h-[90%] bg-gray-800 flex flex-col gap-5 items-center overflow-y-scroll py-10 px-10'>
+                    <h1 className='text-5xl font-bold text-white mb-8'>Leaderboard</h1>
+
+                    {!isResultFetched ? (
+                        <h1 className='text-white'>Loading...</h1>
+                    ) : leaderboard.length === 0 ? (
+                        <h1 className='text-5xl text-white'>Nothing to show yet...</h1>
+                    ) : (
+                        <>
+                            <div className='w-full bg-gray-700 flex gap-4 justify-start items-center py-3 px-4 rounded-md'>
+                                <div className='w-1/6 text-white text-lg font-bold'>Serial Number</div>
+                                <div className='w-4/6 text-white text-lg font-bold'>Username</div>
+                                <div className='w-1/6 text-white text-lg font-bold'>Score</div>
                             </div>
-                        })
-                    }
+                            {leaderboard.map((element, index) => (
+                                <div key={index} className='w-full bg-gray-700 flex gap-4 justify-start items-center py-3 px-4 rounded-md'>
+                                    <div className='w-1/6 text-white text-lg'>{index + 1}</div>
+                                    <div className='w-4/6 text-white text-lg'>{element.userId.username}</div>
+                                    <div className='w-1/6 text-white text-lg'>{element.score}</div>
+                                </div>
+                            ))}
+                        </>
+                    )}
+
+
                 </div>
             </div>
+
         </div>
     )
 }

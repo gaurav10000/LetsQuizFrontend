@@ -64,53 +64,43 @@ const Profile = () => {
   return (
     <div className='h-dvh bg-[#36454F]'>
       <Dashboard />
-      <div className='w-full h-[83%] flex justify-center mt-10'>
-        <div className='flex flex-col justify-center items-center h-[80%] w-full mt-20'>
-          {/* <h1 className='text-5xl text-center'>Profile</h1> */}
-          <div className='border-2 border-black min-h-[80%] w-[60%] py-5'>
-            <form className='h-full flex flex-col justify-center gap-5'>
+      <div className='flex justify-center mt-10'>
+        <div className='w-full max-w-screen-md mt-20'>
+          <div className='bg-white shadow-md rounded-lg overflow-hidden'>
+            <div className='p-8'>
+              <h1 className='text-3xl font-bold text-center mb-6'>Profile</h1>
 
-              {/* // This is the avatar field */}
-              <div className='flex gap-5 justify-center items-center'>
-                <img className='h-40 w-40 rounded-3xl absolute top-[11rem] border-[3px] border-black' src={`${user.avatar}`} alt="avatar of user" />
-              </div>
-
-              {/* // This is the full name field */}
-              <div className='flex gap-5 justify-center items-center'>
-                <label className='text-2xl' htmlFor="fullname">Full Name : </label>
-                <input className='text-center py-1 px-2 border-2 border-black font-bold bg-[#22282c]' type="text" name="fullname" id="fullname" defaultValue={user.fullname} 
-                onChange={(e) => setFullname(e.target.value)}
-                />
+              <div className='flex items-center justify-center mb-8'>
+                <img className='h-40 w-40 rounded-full border-4 border-black' src={`${user.avatar}`} alt="avatar of user" />
               </div>
 
-              {/* // This is the username field */}
-              <div className='flex gap-5 justify-center items-center'>
-                <label className='text-2xl' htmlFor="username">Username : </label>
-                <input className='text-center py-1 px-2 border-2 border-black font-bold bg-[#22282c]' type="username" name="username" id="username" defaultValue={user.username} 
-                onChange={(e) => setUsername(e.target.value)}
-                />
-              </div>
+              <form className='flex flex-col gap-4'>
+                <div className='flex items-center gap-4'>
+                  <label className='text-lg' htmlFor="fullname">Full Name:</label>
+                  <input className='py-2 px-4 border-2 border-black rounded-lg flex-1' type="text" name="fullname" id="fullname" defaultValue={user.fullname} onChange={(e) => setFullname(e.target.value)} />
+                </div>
 
-              {/* // This is the email field */}
-              <div className='flex gap-5 justify-center items-center'>
-                <label className='text-2xl' htmlFor="email">Email : </label>
-                <input className='text-center py-1 px-2 border-2 border-black font-bold bg-[#22282c]' type="email" name="email" id="email" defaultValue={user.email} 
-                onChange={(e) => setEmail(e.target.value)}
-                />
-              </div>
-              {/* // This is the password field */}
-              <div className='flex gap-5 justify-center items-center'>
-                <label className='text-2xl' htmlFor="password">New Password : </label>
-                <input type="password" name="password" id="password" defaultValue={"NoChange"} className='text-center py-1 px-2 border-2 border-black font-bold bg-[#22282c]' 
-                onChange={(e) => setPassword(e.target.value)}
-                />
-              </div>
+                <div className='flex items-center gap-4'>
+                  <label className='text-lg' htmlFor="username">Username:</label>
+                  <input className='py-2 px-4 border-2 border-black rounded-lg flex-1' type="username" name="username" id="username" defaultValue={user.username} onChange={(e) => setUsername(e.target.value)} />
+                </div>
 
-              <div className='flex gap-5 justify-center items-center mt-3'>
-                <button type="submit" className='bg-black hover:bg-cyan-500 text-xl text-white p-2 border-2 border-white' onClick={handleCancel}>Cancel</button>
-                <button type="submit" className='bg-black hover:bg-cyan-500 text-xl text-white p-2 border-2 border-white' onClick={handleUpdate}>Update</button>
-              </div>
-            </form>
+                <div className='flex items-center gap-4'>
+                  <label className='text-lg' htmlFor="email">Email:</label>
+                  <input className='py-2 px-4 border-2 border-black rounded-lg flex-1' type="email" name="email" id="email" defaultValue={user.email} onChange={(e) => setEmail(e.target.value)} />
+                </div>
+
+                <div className='flex items-center gap-4'>
+                  <label className='text-lg' htmlFor="password">New Password:</label>
+                  <input className='py-2 px-4 border-2 border-black rounded-lg flex-1' type="password" name="password" id="password" defaultValue={"NoChange"} onChange={(e) => setPassword(e.target.value)} />
+                </div>
+
+                <div className='flex justify-center mt-6'>
+                  <button type="button" className='bg-black hover:bg-gray-800 text-white py-2 px-4 rounded-lg mr-4' onClick={handleCancel}>Cancel</button>
+                  <button type="submit" className='bg-black hover:bg-gray-800 text-white py-2 px-4 rounded-lg' onClick={handleUpdate}>Update</button>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
       </div>

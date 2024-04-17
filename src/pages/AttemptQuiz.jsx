@@ -121,45 +121,34 @@ const AttemptQuiz = (props) => {
     return (
         <div className='w-full h-dvh'>
             <Dashboard />
-            <div className='w-full h-[88%] flex gap-1'>
-
-                <div className='w-full h-[100%] bg-red-600 flex flex-col items-center justify-start pt-10'>
-                    <div>
-                        <h1 className='text-2xl'>{currentQuestion?.question}</h1>
-                    </div>
-                    <div className='w-[80%] min-h-56 flex flex-wrap justify-center bg-yellow-200 mt-4'>
-                        {
-                            !questionsFetchedSuccessfully ? <h1>Loading...</h1> : currentQuestion?.options.map((ele, index) => {
-                                // console.log(ele);
-                                return <div key={index} className='w-1/3 h-1/3 bg-green-600 my-1 mx-3 px-3 flex justify-start items-center gap-5'>
-                                    <input type="checkbox" name={`${ele._id}`} id={`${ele._id}`} value={ele.option} onClick={
-                                        (e) => {
-
-
-                                            for(let i=0; i<currentQuestion.options.length; ++i) {
-                                                if (currentQuestion.options[i]._id == e.target.id) {
-                                                    if (e.target.checked) {
-                                                        // selectedAnswers.push(ele._id)
-                                                        currentQuestion.options[i].isSelected = true
-                                                    } else {
-                                                        // selectedAnswers.pop(ele._id)
-                                                        currentQuestion.options[i].isSelected = false
-                                                    }
+            <div className='w-full h-[88%] bg-gray-700 flex flex-col justify-start items-center pt-4' >
+                <div className='text-3xl text-white font-bold'>Attempt Quiz</div>
+                <div className='bg-gray-800 w-[50%] h-[70%] flex flex-col justify-around items-center rounded-lg mt-10 py-10 px-36'>
+                    <div className='text-2xl text-white font-bold'>{currentQuestion?.question}</div>
+                    <div className='w-full Options-Container flex flex-col gap-3'>
+                        {questionsFetchedSuccessfully && currentQuestion?.options.map((ele, index) => (
+                            <div key={index} className='option flex gap-4 items-center'>
+                                <input type="checkbox" name={`${ele._id}`} id={`${ele._id}`} value={ele.option} onClick={
+                                    (e) => {
+                                        for (let i = 0; i < currentQuestion.options.length; ++i) {
+                                            if (currentQuestion.options[i]._id == e.target.id) {
+                                                if (e.target.checked) {
+                                                    currentQuestion.options[i].isSelected = true
+                                                } else {
+                                                    currentQuestion.options[i].isSelected = false
                                                 }
                                             }
-                                            // console.log(selectedAnswers);
                                         }
-                                    } />
-                                    <h2>{ele.option}</h2>
-                                </div>
-                            })
-                        }
+                                    }
+                                } />
+                                <label htmlFor={ele.option} className='w-full '>{ele.option}</label>
+                            </div>
+                        ))}
                     </div>
-
-                    <div className='w-[80%] min-h-24 bg-cyan-600 mt-5 flex justify-center items-center gap-7' >
-                        <button className='w-1/6 h-4/6 text-lg hover:bg-cyan-500 border-2 border-white py-2 px-3' onClick={handleSaveAndNext} >Save and next</button>
-                        <button className='w-1/6 h-4/6 text-lg hover:bg-cyan-500 border-2 border-white py-2 px-3 ' onClick={handleEndQuiz}>End Quiz</button>
-                        <button onClick={() => console.log(currentQuestion)}>get answer</button>
+                    <div className='flex justify-between w-[80%]'>
+                        <button onClick={handleSaveAndNext} className='bg-blue-500 text-white p-2 rounded-lg'>Save and Next</button>
+                        <button onClick={handleEndQuiz} className='bg-red-500 text-white p-2 rounded-lg'>End Quiz</button>
+                        {/* <button onClick={() => console.log(currentQuestion)}>current question</button> */}
                     </div>
                 </div>
             </div>

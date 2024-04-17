@@ -22,9 +22,6 @@ const CreateQuiz = () => {
   const [availableTill, setavailableTill] = useState('')
   const [totalTimeLimit, setTotalTimeLimit] = useState('')
 
-  // useEffect(() => {
-  //   console.log(quizTitle, subject, availableAfter, availableTill);
-  // }, [quizTitle, subject, availableAfter, availableTill])
 
   const handleSubmit = () => {
     axios.post('http://localhost:8080/api/v1/quiz/createQuiz', {
@@ -40,10 +37,9 @@ const CreateQuiz = () => {
       },
       withCredentials: true
     }).then((res) => {
-      console.log(res)
       Cookies.set('quizCode', `${quizCode}`)
-      alert(res.status + " " + res.statusText)
-      console.log('Before Navigating to addingQuestions');
+      // alert(res.status + " " + res.statusText)
+      alert('Quiz Details Added Successfully, Now Add Questions to the Quiz')
       navigate('/addingQuestions')
     }).catch((err) => {
       console.log(err)
@@ -57,7 +53,7 @@ const CreateQuiz = () => {
   }
 
   return (
-    <div className='bg-blue-600 w-full h-dvh'>
+    <div className='bg-[#36454F] w-full h-dvh'>
       <Dashboard />
       <div className='bg-gray-700 w-full h-[88%] flex flex-col justify-center items-center'>
         <div className='bg-gray-800 w-[40%] h-[70%] flex flex-col justify-center items-center rounded-lg'>
@@ -69,7 +65,7 @@ const CreateQuiz = () => {
             <input type='text' placeholder='Subject' className='w-[80%] h-10 rounded-lg bg-gray-800 text-white pl-2 mt-4' onChange={(e) => setSubject(e.target.value)} />
             <input type='datetime-local' placeholder='Available After' className='w-[80%] h-10 rounded-lg bg-gray-800 text-white pl-2 mt-4' onChange={(e) => setavailableAfter(e.target.value)} />
             <input type='datetime-local' placeholder='Available Till' className='w-[80%] h-10 rounded-lg bg-gray-800 text-white pl-2 mt-4' onChange={(e) => setavailableTill(e.target.value)} />
-            <input type='number' placeholder='Total Time Limit (in minutes)' className='w-[80%] h-10 rounded-lg bg-gray-800 text-white pl-2 mt-4' onChange={(e) => setTotalTimeLimit(e.target.value)} />
+            {/* <input type='number' placeholder='Total Time Limit (in minutes)' className='w-[80%] h-10 rounded-lg bg-gray-800 text-white pl-2 mt-4' onChange={(e) => setTotalTimeLimit(e.target.value)} /> */}
           </div>
           <div className='flex justify-center items-center mt-4'>
             <button className='w-20 h-10 bg-blue-500 text-white rounded-lg' onClick={handleSubmit}>Create</button>

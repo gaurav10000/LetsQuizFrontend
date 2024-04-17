@@ -27,11 +27,11 @@ const QuizzesPage = () => {
             <Dashboard />
 
             <div className='mt-2'>
-                <h1 className='text-5xl text-center'>More Quizes</h1>
+                <h1 className='text-5xl text-center'>Quizzes</h1>
                 <div className=' flex justify-center'>
                     <div className='w-11/12 flex flex-col flex-wrap gap-5 mt-5'>
                         <h2 className='text-2xl'>Active Quizzes</h2>
-                        <div className='w-11/12 px-5 py-7 flex overflow-auto gap-5 mt-2 bg-black' >
+                        <div className='w-11/12 px-5 py-7 flex gap-5 mt-2 bg-black overflow-x-scroll' >
                             {activeQuizzes.length > 0 ? activeQuizzes.map((quiz, index) => {
                                 return (
                                     <div key={index} id={index} className='min-w-[20rem] bg-blue-300 p-5 rounded-md flex flex-col gap-2'>

@@ -46,7 +46,7 @@ const AddingQuestions = () => {
       console.log(err)
       alert('Something has happend, please try again.')
     })
-    
+
   }
 
 
@@ -59,7 +59,7 @@ const AddingQuestions = () => {
     newOptionField.querySelector('input[type="text"]').value = ''
     newOptionField.querySelector('input[type="text"]').placeholder = 'Option ' + (optionsContainer.children.length + 1)
     optionsContainer.appendChild(newOptionField)
-    
+
   }
 
   const handleDone = (e) => {
@@ -68,31 +68,27 @@ const AddingQuestions = () => {
   }
 
   return (
-    <div className='bg-blue-600 w-full h-dvh'>
+    <div className='bg-[#36454F] w-full h-dvh'>
       <Dashboard />
       <div className='bg-gray-700 w-full h-[88%] flex flex-col justify-center items-center'>
-        <h1 className='text-2xl my-2'>Lets start with some details about the quiz</h1>
-        <div className='w-[96%] h-[90%] border-2 border-dashed border-black flex flex-col justify-center items-center gap-5 px-10 text-center'>
-          <div className='w-full flex flex-col justify-center items-center gap-4 '>
-            <input type='text' placeholder='Enter the question' className='w-[80%] h-10' />
-            <div className='w-full flex flex-col justify-center items-center gap-4 Options-Container'>
-              <div className='flex gap-3 justify-center w-full option'>
-                <input type="checkbox" name="Option 1" id="Option 1" />
-                <input type='text' placeholder='Option 1' className='w-[80%] h-10' />
-              </div>
-              <div className='flex gap-3 justify-center w-full option'>
-                <input type="checkbox" name="Option 2" id="Option 2" />
-                <input type='text' placeholder='Option 2' className='w-[80%] h-10' />
+        <div className='bg-gray-800 w-[40%] h-[70%] flex flex-col justify-center items-center rounded-lg'>
+          <div className='text-3xl text-white font-bold'>Add Questions</div>
+          <div className='text-1xl text-white font-bold mt-4'>Quiz Code: {Cookies.get('quizCode')}</div>
+
+          <div className='w-full flex flex-col justify-center items-center mt-4'>
+            <input type='text' placeholder='Question' className='w-[80%] h-10 rounded-lg bg-gray-800 text-white pl-2 border-b-4' />
+            <div className='w-full Options-Container flex flex-col justify-center mt-4'>
+              <div className='w-full option flex gap-5 justify-center items-center mt-5'>
+                <input type='checkbox' name='Option 1' id='Option 1' className='w-5 h-5' />
+                <input type='text' placeholder='Option 1' className='w-[84%] h-10 rounded-lg bg-gray-800 text-white pl-2 border-b-4' />
               </div>
             </div>
+            <div className='w-full h-20 flex gap-3 items-center justify-center'>
+              <button onClick={handleCloneInputField} className='w-[28%] bg-blue-500 text-white p-2 rounded-md mt-4'>Add Option</button>
+              <button onClick={handleAddQuestion} className='w-[28%] bg-blue-500 text-white p-2 rounded-md mt-4'>Add this Question to Quiz</button>
+              <button onClick={handleDone} className='w-[28%] bg-blue-500 text-white p-2 rounded-md mt-4'>Done</button>
+            </div>
           </div>
-
-          <div className='w-full flex justify-around'>
-            <button className='w-[30%] text-lg hover:bg-cyan-500 border-2 border-white py-2 px-3' onClick={handleCloneInputField}>Add another option</button>
-            <button className='w-[30%] text-lg hover:bg-cyan-500 border-2 border-white py-2 px-3' onClick={handleAddQuestion}>Add Question</button>
-            <button className='w-[30%] text-lg hover:bg-cyan-500 border-2 border-white py-2 px-3' onClick={handleDone}>Done</button>
-          </div>
-
         </div>
       </div>
     </div>
